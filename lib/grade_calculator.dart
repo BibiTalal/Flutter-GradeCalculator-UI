@@ -24,8 +24,17 @@ class GradeCalculator extends StatelessWidget {
         Center(
             child: ElevatedButton(
           child: Text("Calculate"),
+          style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          ))),
           onPressed: () {
             int? grade = int.tryParse(controller.text);
+            if (grade == null) {
+              print("'${controller.text}' is not a valid grade %");
+              return;
+            }
 
             if (grade! >= 90) {
               print("A");
